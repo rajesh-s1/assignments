@@ -1,0 +1,371 @@
+rajesh_shiva [ ~ ]$ az vm list --query '[].id'
+[
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/SRE-CENTRALIZED-DB-RG/providers/Microsoft.Compute/virtualMachines/srepostgressdbtest",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cacsx-test-vm2",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/joe-test-sec-vm",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/phil-cacsx-vm",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/srini-cacsx-vm",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/venkat-cacsx-vm",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-JEDIOPS-POC/providers/Microsoft.Compute/virtualMachines/chris-test-vm",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-LINTO-SANDBOX/providers/Microsoft.Compute/virtualMachines/c360-eus2-sanbox-deploy-vm-001-linto",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-SRE-APP-EUS-MONITOR/providers/Microsoft.Compute/virtualMachines/sreappvm",
+  "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-TRAINING/providers/Microsoft.Compute/virtualMachines/vm-chris-test"
+]
+
+
+
+
+
+
+
+rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer 
+{
+  "additionalCapabilities": null,
+  "applicationProfile": null,
+  "availabilitySet": null,
+  "billingProfile": null,
+  "capacityReservation": null,
+  "diagnosticsProfile": {
+    "bootDiagnostics": {
+      "enabled": true,
+      "storageUri": "https://cxpgbouncergortprv26akoa.blob.core.windows.net/"
+    }
+  },
+  "evictionPolicy": null,
+  "extendedLocation": null,
+  "extensionsTimeBudget": null,
+  "hardwareProfile": {
+    "vmSize": "Standard_D3_v2",
+    "vmSizeProperties": null
+  },
+  "host": null,
+  "hostGroup": null,
+  "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer",
+  "identity": null,
+  "instanceView": null,
+  "licenseType": null,
+  "location": "eastus2",
+  "name": "cxpgbouncer",
+  "networkProfile": {
+    "networkApiVersion": null,
+    "networkInterfaceConfigurations": null,
+    "networkInterfaces": [
+      {
+        "deleteOption": null,
+        "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/rg-cgi-cacsx-cus-360-monitor/providers/Microsoft.Network/networkInterfaces/cxpgbouncerVMNic",
+        "primary": null,
+        "resourceGroup": "rg-cgi-cacsx-cus-360-monitor"
+      }
+    ]
+  },
+  "osProfile": {
+    "adminPassword": null,
+    "adminUsername": "sshuser",
+    "allowExtensionOperations": null,
+    "computerName": "cxpgbouncer",
+    "customData": null,
+    "linuxConfiguration": {
+      "disablePasswordAuthentication": false,
+      "enableVmAgentPlatformUpdates": false,
+      "patchSettings": {
+        "assessmentMode": "ImageDefault",
+        "automaticByPlatformSettings": null,
+        "patchMode": "ImageDefault"
+      },
+      "provisionVmAgent": null,
+      "ssh": null
+    },
+    "requireGuestProvisionSignal": null,
+    "secrets": [],
+    "windowsConfiguration": null
+  },
+  "plan": null,
+  "platformFaultDomain": null,
+  "priority": null,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+  "resources": [
+    {
+      "autoUpgradeMinorVersion": true,
+      "enableAutomaticUpgrade": null,
+      "forceUpdateTag": null,
+      "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer/extensions/AzureNetworkWatcherExtension",
+      "instanceView": null,
+      "location": "eastus2",
+      "name": "AzureNetworkWatcherExtension",
+      "protectedSettings": null,
+      "protectedSettingsFromKeyVault": null,
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.Azure.NetworkWatcher",
+      "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+      "settings": {},
+      "suppressFailures": null,
+      "tags": null,
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "typeHandlerVersion": "1.4",
+      "typePropertiesType": "NetworkWatcherAgentLinux"
+    },
+    {
+      "autoUpgradeMinorVersion": true,
+      "enableAutomaticUpgrade": null,
+      "forceUpdateTag": null,
+      "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer/extensions/CustomScriptExtension",
+      "instanceView": null,
+      "location": "eastus2",
+      "name": "CustomScriptExtension",
+      "protectedSettings": null,
+      "protectedSettingsFromKeyVault": null,
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.Azure.Extensions",
+      "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+      "settings": {
+        "fileUris": [
+          "https://raw.githubusercontent.com/Azure/azure-postgresql/master/arm-templates/ExampleWithPgBouncer/configure-pgbouncer.sh",
+          "https://raw.githubusercontent.com/Azure/azure-postgresql/master/arm-templates/ExampleWithPgBouncer/pgbouncer.ini"
+        ]
+      },
+      "suppressFailures": null,
+      "tags": null,
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "typeHandlerVersion": "2.0",
+      "typePropertiesType": "CustomScript"
+    },
+    {
+      "autoUpgradeMinorVersion": true,
+      "enableAutomaticUpgrade": null,
+      "forceUpdateTag": "126964cd-c500-4940-9580-e2df87bdf927",
+      "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer/extensions/MDE.Linux",
+      "instanceView": null,
+      "location": "eastus2",
+      "name": "MDE.Linux",
+      "protectedSettings": null,
+      "protectedSettingsFromKeyVault": null,
+      "provisioningState": "Failed",
+      "publisher": "Microsoft.Azure.AzureDefenderForServers",
+      "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+      "settings": {
+        "autoUpdate": true,
+        "azureResourceId": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer",
+        "forceReOnboarding": false,
+        "vNextEnabled": false
+      },
+      "suppressFailures": null,
+      "tags": null,
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "typeHandlerVersion": "1.0",
+      "typePropertiesType": "MDE.Linux"
+    },
+    {
+      "autoUpgradeMinorVersion": true,
+      "enableAutomaticUpgrade": false,
+      "forceUpdateTag": null,
+      "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer/extensions/OmsAgentForLinux",
+      "instanceView": null,
+      "location": "eastus2",
+      "name": "OmsAgentForLinux",
+      "protectedSettings": null,
+      "protectedSettingsFromKeyVault": null,
+      "provisioningState": "Failed",
+      "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+      "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+      "settings": {
+        "workspaceId": "4cc297cb-ce9e-4d59-8615-230aceafd7a3"
+      },
+      "suppressFailures": null,
+      "tags": null,
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "typeHandlerVersion": "1.0",
+      "typePropertiesType": "OmsAgentForLinux"
+    }
+  ],
+  "scheduledEventsProfile": null,
+  "securityProfile": null,
+  "storageProfile": {
+    "dataDisks": [
+      {
+        "caching": "None",
+        "createOption": "Empty",
+        "deleteOption": "Detach",
+        "detachOption": null,
+        "diskIopsReadWrite": null,
+        "diskMBpsReadWrite": null,
+        "diskSizeGb": null,
+        "image": null,
+        "lun": 0,
+        "managedDisk": {
+          "diskEncryptionSet": null,
+          "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/disks/cxpgbouncer_disk2_836b824d966045a69c134c51f1b1bf4e",
+          "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+          "securityProfile": null,
+          "storageAccountType": null
+        },
+        "name": "cxpgbouncer_disk2_836b824d966045a69c134c51f1b1bf4e",
+        "toBeDetached": false,
+        "vhd": null,
+        "writeAcceleratorEnabled": null
+      }
+    ],
+    "diskControllerType": null,
+    "imageReference": {
+      "communityGalleryImageId": null,
+      "exactVersion": "19.04.201908140",
+      "id": null,
+      "offer": "UbuntuServer",
+      "publisher": "Canonical",
+      "sharedGalleryImageId": null,
+      "sku": "19.04",
+      "version": "latest"
+    },
+    "osDisk": {
+      "caching": "ReadWrite",
+      "createOption": "FromImage",
+      "deleteOption": "Detach",
+      "diffDiskSettings": null,
+      "diskSizeGb": null,
+      "encryptionSettings": null,
+      "image": null,
+      "managedDisk": {
+        "diskEncryptionSet": null,
+        "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/disks/cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+        "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+        "securityProfile": null,
+        "storageAccountType": null
+      },
+      "name": "cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+      "osType": "Linux",
+      "vhd": null,
+      "writeAcceleratorEnabled": null
+    }
+  },
+  "tags": null,
+  "timeCreated": "2022-08-25T18:17:38.098132+00:00",
+  "type": "Microsoft.Compute/virtualMachines",
+  "userData": null,
+  "virtualMachineScaleSet": null,
+  "vmId": "05f4b81a-7358-47fc-92e5-0cf3921d1952",
+  "zones": null
+}
+rajesh_shiva [ ~ ]$ 
+
+
+
+
+
+
+
+
+
+rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query '[storageProfile.osDisk]'
+[
+  {
+    "caching": "ReadWrite",
+    "createOption": "FromImage",
+    "deleteOption": "Detach",
+    "diffDiskSettings": null,
+    "diskSizeGb": null,
+    "encryptionSettings": null,
+    "image": null,
+    "managedDisk": {
+      "diskEncryptionSet": null,
+      "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/disks/cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+      "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+      "securityProfile": null,
+      "storageAccountType": null
+    },
+    "name": "cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+    "osType": "Linux",
+    "vhd": null,
+    "writeAcceleratorEnabled": null
+  }
+]
+
+
+
+
+to get in JSON no need to use []
+
+rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query 'storageProfile.osDisk'
+{
+  "caching": "ReadWrite",
+  "createOption": "FromImage",
+  "deleteOption": "Detach",
+  "diffDiskSettings": null,
+  "diskSizeGb": null,
+  "encryptionSettings": null,
+  "image": null,
+  "managedDisk": {
+    "diskEncryptionSet": null,
+    "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/disks/cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+    "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+    "securityProfile": null,
+    "storageAccountType": null
+  },
+  "name": "cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+  "osType": "Linux",
+  "vhd": null,
+  "writeAcceleratorEnabled": null
+}
+
+
+
+
+rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query storageProfile.osDisk
+{
+  "caching": "ReadWrite",
+  "createOption": "FromImage",
+  "deleteOption": "Detach",
+  "diffDiskSettings": null,
+  "diskSizeGb": null,
+  "encryptionSettings": null,
+  "image": null,
+  "managedDisk": {
+    "diskEncryptionSet": null,
+    "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/disks/cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+    "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+    "securityProfile": null,
+    "storageAccountType": null
+  },
+  "name": "cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+  "osType": "Linux",
+  "vhd": null,
+  "writeAcceleratorEnabled": null
+}
+rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query storageProfile.osDisk -o json
+{
+  "caching": "ReadWrite",
+  "createOption": "FromImage",
+  "deleteOption": "Detach",
+  "diffDiskSettings": null,
+  "diskSizeGb": null,
+  "encryptionSettings": null,
+  "image": null,
+  "managedDisk": {
+    "diskEncryptionSet": null,
+    "id": "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/disks/cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+    "resourceGroup": "RG-CGI-CACSX-CUS-360-MONITOR",
+    "securityProfile": null,
+    "storageAccountType": null
+  },
+  "name": "cxpgbouncer_OsDisk_1_6349f4bd9f184a85a202703910fbeebc",
+  "osType": "Linux",
+  "vhd": null,
+  "writeAcceleratorEnabled": null
+}
+
+
+to get specific individual data output
+
+
+rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query name -o json
+"cxpgbouncer"
+rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query resourceGroup -o json
+"RG-CGI-CACSX-CUS-360-MONITOR"
+rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query location -o json
+"eastus2"
+
+
+
+rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query storageProfile.osDisk.osType -o json
+"Linux"
