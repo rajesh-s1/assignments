@@ -1,3 +1,4 @@
+#COMMAND TO LIST ALL AVAILABLE RESROUCE TYPE
 rajesh_shiva [ ~ ]$ az vm list --query '[].id'
 [
   "/subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/SRE-CENTRALIZED-DB-RG/providers/Microsoft.Compute/virtualMachines/srepostgressdbtest",
@@ -17,7 +18,7 @@ rajesh_shiva [ ~ ]$ az vm list --query '[].id'
 
 
 
-
+#COMMAND TO GET COMPLETE METADATA OF A SPECIFIC VM
 
 rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer 
 {
@@ -255,7 +256,7 @@ rajesh_shiva [ ~ ]$
 
 
 
-
+#COMMAND TO QUERY ONLY SPECIFIC SECTIONS OF METADATA OUTPUT
 
 rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query '[storageProfile.osDisk]'
 [
@@ -284,7 +285,7 @@ rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-5365
 
 
 
-to get in JSON no need to use []
+#COMMAND TO QUERY ONLY SPECIFIC SECTIONS OF METADATA OUTPUT IN JSON - no need to use []
 
 rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query 'storageProfile.osDisk'
 {
@@ -309,7 +310,7 @@ rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-5365
 }
 
 
-
+#COMMAND TO QUERY ONLY SPECIFIC SECTIONS OF METADATA OUTPUT IN JSON - no need to use []
 
 rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query storageProfile.osDisk
 {
@@ -332,6 +333,10 @@ rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-5365
   "vhd": null,
   "writeAcceleratorEnabled": null
 }
+
+
+#COMMAND TO QUERY ONLY SPECIFIC SECTIONS OF METADATA OUTPUT IN JSON - no need to use []
+
 rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query storageProfile.osDisk -o json
 {
   "caching": "ReadWrite",
@@ -355,17 +360,17 @@ rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-5365
 }
 
 
-to get specific individual data output
 
+#COMMAND TO GET ONLY SPECIFIC DATA IN JSON 
 
 rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query name -o json
 "cxpgbouncer"
+
 rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query resourceGroup -o json
 "RG-CGI-CACSX-CUS-360-MONITOR"
+
 rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query location -o json
 "eastus2"
-
-
 
 rajesh_shiva [ ~ ]$ az vm show --ids /subscriptions/338ca36c-06f4-4505-ae2f-536527c78e8b/resourceGroups/RG-CGI-CACSX-CUS-360-MONITOR/providers/Microsoft.Compute/virtualMachines/cxpgbouncer --query storageProfile.osDisk.osType -o json
 "Linux"
