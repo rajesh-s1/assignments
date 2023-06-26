@@ -1,4 +1,4 @@
-d={'a':{'b':{'b1':'c'}}}
+d={'a':{'b':{'c':'d'}}}
 
 keyss=[]
 valuess=[]
@@ -23,16 +23,17 @@ while True:
 
 print("Final value is: ", s)
 print("All the available keys: ",keyss)
+print("keys: ", "/".join(keyss))
 print("All the available values: ", valuess)
 
 
+#OUTPUT
+#"C:\Users\Rajesh S\Downloads\python-prac\venv\Scripts\python.exe" "C:\Users\Rajesh S\Downloads\python-prac\test.py" 
+#Final value is:  c
+#All the available keys:  ['a', 'b', 'b1']
+#All the available values:  [{'b': {'b1': 'c'}}, {'b1': 'c'}, 'c']
 
-"C:\Users\Rajesh S\Downloads\python-prac\venv\Scripts\python.exe" "C:\Users\Rajesh S\Downloads\python-prac\test.py" 
-Final value is:  c
-All the available keys:  ['a', 'b', 'b1']
-All the available values:  [{'b': {'b1': 'c'}}, {'b1': 'c'}, 'c']
-
-Process finished with exit code 0
+#Process finished with exit code 0
 
 
 
@@ -68,8 +69,8 @@ print("keys: ", "/".join(keyss))
 print("All the available values: ", valuess)
 
 
-"C:\Users\Rajesh S\Downloads\python-prac\venv\Scripts\python.exe" "C:\Users\Rajesh S\Downloads\python-prac\test.py" 
-Final value is:  a
-All the available keys:  ['x', 'y', 'z']
-keys:  x/y/z
-All the available values:  [{'y': {'z': 'a'}}, {'z': 'a'}, 'a']
+#"C:\Users\Rajesh S\Downloads\python-prac\venv\Scripts\python.exe" "C:\Users\Rajesh S\Downloads\python-prac\test.py" 
+#Final value is:  a
+#All the available keys:  ['x', 'y', 'z']
+#keys:  x/y/z
+#All the available values:  [{'y': {'z': 'a'}}, {'z': 'a'}, 'a']
