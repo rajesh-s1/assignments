@@ -1,17 +1,9 @@
 
-#TARGET
-#1RG - DONE
-#1VNET - DONE
-#3SUBNETS - DONE - NEED TO ADD LOOP OR COUNT
-#3NIC - DONE - NEED TO ADD LOOP OR COUNT
-#1RANDOM_PASSWORD FOR 3 VMS - DONE
-#3VMS
-
 #CREATE RESOURCE GROUP
 
 resource "azurerm_resource_group" "krg" {
-  name = "k-rg"
-  location = "South India"
+  name = var.rg_name
+  location = var.location
 
   tags = {
     purpose = "assignment"
@@ -23,8 +15,8 @@ resource "azurerm_resource_group" "krg" {
 
 resource "azurerm_virtual_network" "kvnet" {
   name                = "k-vnet"
-  location            = "South India"
-  resource_group_name = azurerm_resource_group.krg.name
+  location            = var.location
+  resource_group_name = var.rg_name
   address_space       = ["10.1.0.0/16", "10.2.0.0/16"]
   depends_on = [azurerm_resource_group.krg]
   tags = {
@@ -37,7 +29,7 @@ resource "azurerm_virtual_network" "kvnet" {
 #SUBNET-1
 resource "azurerm_subnet" "kfes" {
   name                 = "k_fes"
-  resource_group_name  = azurerm_resource_group.krg.name
+  resource_group_name  = var.rg_name
   virtual_network_name = azurerm_virtual_network.kvnet.name
   address_prefixes     = ["10.1.1.0/24"]
 }
@@ -45,7 +37,7 @@ resource "azurerm_subnet" "kfes" {
 #SUBNET-2
 resource "azurerm_subnet" "kbes" {
   name                 = "k_bes"
-  resource_group_name  = azurerm_resource_group.krg.name
+  resource_group_name  = var.rg_name
   virtual_network_name = azurerm_virtual_network.kvnet.name
   address_prefixes     = ["10.1.2.0/24"]
 }
@@ -53,7 +45,7 @@ resource "azurerm_subnet" "kbes" {
 #SUBNET-3
 resource "azurerm_subnet" "kdbs" {
   name                 = "k_dbs"
-  resource_group_name  = azurerm_resource_group.krg.name
+  resource_group_name  = var.rg_name
   virtual_network_name = azurerm_virtual_network.kvnet.name
   address_prefixes     = ["10.1.3.0/24"]
 }
@@ -61,7 +53,7 @@ resource "azurerm_subnet" "kdbs" {
 #SUBNET-4 FOR APPLICATION GATEWAY
 resource "azurerm_subnet" "kags" {
   name                 = "k-ags"
-  resource_group_name  = azurerm_resource_group.krg.name
+  resource_group_name  = var.rg_name
   virtual_network_name = azurerm_virtual_network.kvnet.name
   address_prefixes     = ["10.1.4.0/24"]
 }
@@ -72,8 +64,8 @@ resource "azurerm_subnet" "kags" {
 #NIC-1
 resource "azurerm_network_interface" "knic1" {
   name                = "k-nic1"
-  location            = "South India"
-  resource_group_name = azurerm_resource_group.krg.name
+  location            = var.location
+  resource_group_name = var.rg_name
 
   ip_configuration {
     name                          = "frontend-tier-NIC"
@@ -85,8 +77,8 @@ resource "azurerm_network_interface" "knic1" {
 #NIC-2
 resource "azurerm_network_interface" "knic2" {
   name                = "k-nic2"
-  location            = "South India"
-  resource_group_name = azurerm_resource_group.krg.name
+  location            = var.location
+  resource_group_name = var.rg_name
 
   ip_configuration {
     name                          = "backend-tier-NIC"
@@ -98,8 +90,8 @@ resource "azurerm_network_interface" "knic2" {
 #NIC-3
 resource "azurerm_network_interface" "knic3" {
   name                = "k-nic3"
-  location            = "South India"
-  resource_group_name = azurerm_resource_group.krg.name
+  location            = var.location
+  resource_group_name = var.rg_name
 
   ip_configuration {
     name                          = "db-tier-NIC"
@@ -123,8 +115,8 @@ resource "random_password" "vmpass" {
 
 resource "azurerm_virtual_machine" "kvm1" {
   name                  = "k-vm1"
-  location              = "South India"
-  resource_group_name   = azurerm_resource_group.krg.name
+  location              = var.location
+  resource_group_name   = var.rg_name
   network_interface_ids = [azurerm_network_interface.knic1.id]
   vm_size               = "Standard_B1s"
   storage_os_disk {
@@ -154,8 +146,8 @@ resource "azurerm_virtual_machine" "kvm1" {
 
 resource "azurerm_virtual_machine" "kvm2" {
   name                  = "k-vm2"
-  location              = "South India"
-  resource_group_name   = azurerm_resource_group.krg.name
+  location              = var.location
+  resource_group_name   = var.rg_name
   network_interface_ids = [azurerm_network_interface.knic2.id]
   vm_size               = "Standard_B1s"
   storage_os_disk {
@@ -185,8 +177,8 @@ resource "azurerm_virtual_machine" "kvm2" {
 
 resource "azurerm_virtual_machine" "kvm3" {
   name                  = "k-vm3"
-  location              = "South India"
-  resource_group_name   = azurerm_resource_group.krg.name
+  location              = var.location
+  resource_group_name   = var.rg_name
   network_interface_ids = [azurerm_network_interface.knic3.id]
   vm_size               = "Standard_B1s"
   storage_os_disk {
@@ -223,8 +215,8 @@ output "fe-vm-private-ip" {
 #PUBLIC IP FOR APPLICATION GATEWAY
 resource "azurerm_public_ip" "pip" {
   name                = "p_ip"
-  resource_group_name = azurerm_resource_group.krg.name
-  location            = "South India"
+  resource_group_name = var.rg_name
+  location            = var.location
   allocation_method   = "Dynamic"
 }
 
@@ -235,8 +227,8 @@ resource "azurerm_public_ip" "pip" {
 
 resource "azurerm_application_gateway" "kag" {
   name                = "k-ag"
-  resource_group_name = azurerm_resource_group.krg.name
-  location            = "South India"
+  resource_group_name = var.rg_name
+  location            = var.location
 
   sku {
     name     = "Standard_Small"
